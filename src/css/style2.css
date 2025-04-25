@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Japanese-inspired color palette based on the anime image */
+:root {
+    --soft-blue: #81c7d4; /* Light blue from the kimono and hair */
+    --cherry-pink: #e57373; /* Pink from the cherry blossoms */
+    --soft-beige: #f9f6e8; /* Light beige/yellow background */
+    --dark-accent: #d05a6e; /* Darker pink-red from the book and ornaments */
+}
+
+.banner-bg {
+    background-color: var(--soft-beige);
+    position: relative;
+}
+
+.banner-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-image: url('cherry-blossom.png'); /* Add a subtle cherry blossom image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.primary-color {
+    color: var(--soft-blue);
+}
+
+.accent-color {
+    color: var(--cherry-pink);
+}
+
+.primary-bg {
+    background-color: var(--soft-blue);
+}
+
+.secondary-bg {
+    background-color: var(--soft-beige);
+}
+
+.btn-accent {
+    border-color: var(--cherry-pink);
+}
+
+.btn-accent:hover {
+    background-color: var(--cherry-pink);
+}
+
+.btn-primary {
+    border-color: var(--soft-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--soft-blue);
+}
