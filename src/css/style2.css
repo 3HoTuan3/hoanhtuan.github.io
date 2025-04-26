@@ -563,6 +563,17 @@ body {
         transition: transform 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
+    .section {
+        padding: 3rem 1rem;
+        width: 100vw; /* Sử dụng viewport width */
+        max-width: 100%; /* Ngăn overflow */
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0;
+    }
     .nav-links.active {
         transform: translateY(0);
     }
@@ -578,6 +589,10 @@ body {
     .banner-subtitle {
         font-size: 1.5rem;
     }
+    .banner, .banner-overlay {
+        width: 100vw;
+        max-width: 100%;
+    }
     .section {
         padding: 3rem 1rem;
     }
@@ -591,12 +606,12 @@ body {
         display: none;
     }
     .section-nav {
-        right: 0.5rem; /* Giảm khoảng cách bên phải */
-        gap: 0.5rem; /* Giảm khoảng cách giữa các chấm */
+        right: 5px;
+        gap: 0.5rem;
     }
     
     .section-nav-dot {
-        width: 8px; /* Giảm kích thước chấm */
+        width: 8px;
         height: 8px;
     }
     
