@@ -590,6 +590,21 @@ body {
     .nav-links .slider {
         display: none;
     }
+    .section-nav {
+        right: 0.5rem; /* Giảm khoảng cách bên phải */
+        gap: 0.5rem; /* Giảm khoảng cách giữa các chấm */
+    }
+    
+    .section-nav-dot {
+        width: 8px; /* Giảm kích thước chấm */
+        height: 8px;
+    }
+    
+    /* Đảm bảo không có overflow */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
 }
 
 /* Contact Section */
