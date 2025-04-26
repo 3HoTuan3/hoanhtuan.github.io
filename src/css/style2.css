@@ -226,7 +226,11 @@ body {
 
 /* Section Styling */
 .section {
+    min-height: 100vh; /* thêm dòng này */
     padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
@@ -451,11 +455,11 @@ body {
 }
 
 .timeline-left::after {
-    right: -12px;
+    right: -10px;
 }
 
 .timeline-right::after {
-    left: -12px;
+    left: -10px;
 }
 
 .timeline-content {
