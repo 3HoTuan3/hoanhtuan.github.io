@@ -179,15 +179,32 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
+    position: relative;
 }
 .nav-links li {
     margin-left: 2rem;
+    position: relative;
 }
 .nav-links a {
     text-decoration: none;
     color: var(--dark-gray);
     font-weight: 600;
-    transition: color 0.3s;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+/* Highlight khi active */
+.nav-links a.active {
+    color: var(--cherry-pink);
+    font-weight: 700;
+}
+/* Thanh trượt (Sliding Indicator) */
+.nav-links .slider {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--cherry-pink);
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 .nav-links a:hover {
     color: var(--cherry-pink);
