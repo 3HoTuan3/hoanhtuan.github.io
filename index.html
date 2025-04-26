@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Ho Anh Tuan - Site</title>
     <meta charset="UTF-8">
@@ -9,66 +10,89 @@
         html {
             scroll-behavior: smooth;
         }
+
         body,
         h1 {
             font-family: "Raleway", sans-serif
         }
+
         body,
         html {
             height: 100%
         }
+
         .banner-bg {
-            background-color: #f9f6e8; /* Soft beige background like in the image */
+            background-color: #f9f6e8;
+            /* Soft beige background like in the image */
         }
+
         .accent-color {
-            color: #e57373; /* Pink-red accent color from the cherry blossoms */
+            color: #e57373;
+            /* Pink-red accent color from the cherry blossoms */
         }
+
         .primary-color {
-            color: #81c7d4; /* Soft blue from the kimono and hair */
+            color: #81c7d4;
+            /* Soft blue from the kimono and hair */
         }
+
         .primary-bg {
-            background-color: #81c7d4; /* Soft blue background */
+            background-color: #81c7d4;
+            /* Soft blue background */
         }
+
         .secondary-bg {
-            background-color: #f9f6e8; /* Soft beige background */
+            background-color: #f9f6e8;
+            /* Soft beige background */
         }
+
         .btn-accent {
             border-color: #e57373;
         }
+
         .btn-accent:hover {
             background-color: #e57373;
         }
+
         .btn-primary {
             border-color: #81c7d4;
         }
+
         .btn-primary:hover {
             background-color: #81c7d4;
         }
     </style>
 </head>
+
 <body>
     <!-- Banner Section -->
-    <section class="min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center" style="background-image: url('public/imgs/Ayaka1.png');">
+    <section class="min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center"
+        style="background-image: url('public/imgs/Ayaka1.png');">
         <div class="w-full lg:w-[80%] p-12 text-gray-800">
             <h1 class="text-6xl font-bold mb-10 grid grid-col-1 lg:gap-5">
                 <span>Hi, my name is <span class="primary-color">Ho Anh Tuan</span></span>
                 <span class="text-gray-800">I'm the Web Developer.</span>
             </h1>
 
-            <a href="#about-me" class="uppercase border-2 btn-accent p-3 hover:bg-teal-400 hover:text-white transition-colors cursor-pointer">
-                <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-light focus:outline-none focus:ring focus:ring-pink-300">Know more</span>
+            <a href="#about-me"
+                class="uppercase border-2 btn-accent p-3 hover:bg-teal-400 hover:text-white transition-colors cursor-pointer">
+                <span
+                    class="text-xl pl-8 pr-8 pt-3 pb-3 font-light focus:outline-none focus:ring focus:ring-pink-300">Know
+                    more</span>
             </a>
         </div>
     </section>
     <!-- Banner End -->
 
     <!-- About Me Section -->
-    <section id="about-me" class="primary-bg min-h-screen w-full flex flex-col justify-center items-center p-4 lg:p-12 text-white">
+    <section id="about-me"
+        class="primary-bg min-h-screen w-full flex flex-col justify-center items-center p-4 lg:p-12 text-white">
         <div class="w-full lg:w-[60%] mb-5">
             <h2 class="uppercase text-2xl lg:text-5xl text-center font-bold text-white mb-12">ABOUT ME</h2>
             <div class="grid grid-cols-1 gap-2 lg:grid-cols-3 lg:gap-3">
                 <div class="flex justify-center items-center text-center col-span-1">
-                    <img class="object-cover max-w-xs lg:w-auto" src="public/imgs/yeye.jpg" title="My avatar" alt="My avatar" />
+                    <img class="object-cover max-w-xs lg:w-auto" src="public/imgs/yeye.jpg" title="My avatar"
+                        alt="My avatar" />
                 </div>
                 <div class="col-span-1 lg:col-span-2 flex justify-center items-center">
                     <div class="p-0 text-center lg:p-8 lg:text-start">
@@ -77,9 +101,11 @@
                             objective is to become a Senior Software Engineer who masters software architecture, design
                             principles, and modern development technologies.
                         </p>
-                        <a href="https://www.facebook.com/hostuans" target="_blank" 
-                           class="uppercase border-2 border-white p-3 text-white hover:bg-white hover:text-blue-400 transition-colors cursor-pointer">
-                            <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-normal focus:outline-none focus:ring focus:ring-blue-300">View My CV</span>
+                        <a href="https://www.facebook.com/hostuans" target="_blank"
+                            class="uppercase border-2 border-white p-3 text-white hover:bg-white hover:text-blue-400 transition-colors cursor-pointer">
+                            <span
+                                class="text-xl pl-8 pr-8 pt-3 pb-3 font-normal focus:outline-none focus:ring focus:ring-blue-300">View
+                                My CV</span>
                         </a>
                     </div>
                 </div>
@@ -89,7 +115,8 @@
     <!-- About Me End -->
 
     <!-- Contact Section -->
-    <section id="contact" class="secondary-bg min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
+    <section id="contact"
+        class="secondary-bg min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
         <div class="w-full lg:w-[60%] mb-5">
             <h2 class="uppercase text-2xl lg:text-5xl text-center font-bold mb-6">CONTACT</h2>
             <p class="flex flex-col justify-center items-center pt-5 pb-5 text-center">
@@ -98,8 +125,9 @@
             </p>
         </div>
         <a href="mailto: hoanhtuan@gmail.com?subject=Hi, Tuan I want to connect with you for work !!!&body=Please describe your work or projects requirements"
-           class="border-2 btn-primary pl-8 pr-8 pt-3 pb-3 bg-blue-400 text-white hover:bg-white hover:text-blue-400 transition-colors cursor-pointer">
-            <span class="text-xl uppercase font-light focus:outline-none focus:ring focus:ring-blue-300">Send An Email Now</span>
+            class="border-2 btn-primary pl-8 pr-8 pt-3 pb-3 bg-blue-400 text-white hover:bg-white hover:text-blue-400 transition-colors cursor-pointer">
+            <span class="text-xl uppercase font-light focus:outline-none focus:ring focus:ring-blue-300">Send An Email
+                Now</span>
         </a>
     </section>
     <!-- Contact End -->
@@ -133,4 +161,5 @@
 
     <script type="module" src="/src/scripts/application.js"></script>
 </body>
+
 </html>
