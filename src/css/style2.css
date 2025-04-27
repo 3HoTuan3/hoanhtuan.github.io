@@ -537,7 +537,8 @@ body {
     }
 
     .timeline-item::after {
-        left: 15px;
+        left: 31px;
+        transform: translateX(-50%);
     }
 
     .timeline-right {
