@@ -13,21 +13,12 @@
     --medium-gray: #666666;
     --light-gray: #f5f5f5;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+body,h1,h2,h3,h4,h5,h6 {
     font-family: "Raleway", sans-serif;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -610,13 +601,10 @@ body {
         right: 5px;
         gap: 0.5rem;
     }
-    
     .section-nav-dot {
         width: 8px;
         height: 8px;
     }
-    
-    /* Đảm bảo không có overflow */
     body {
         overflow-x: hidden;
         width: 100%;
@@ -735,14 +723,12 @@ body {
 .form-group {
     margin-bottom: 1.5rem;
 }
-
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #666;
 }
-
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -752,13 +738,11 @@ body {
     font-family: "Raleway", sans-serif;
     transition: border-color 0.3s;
 }
-
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--soft-blue);
 }
-
 .btn-submit {
     background-color: var(--soft-blue);
     color: white;
@@ -771,7 +755,6 @@ body {
     transition: background-color 0.3s;
     width: 100%;
 }
-
 .btn-submit:hover {
     background-color: var(--dark-accent);
 }
@@ -783,22 +766,18 @@ footer {
     padding: 3rem 0;
     text-align: center;
 }
-
 footer .social-links {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
-
 footer .social-links li {
     transition: transform 0.3s;
 }
-
 footer .social-links li:hover {
     transform: translateY(-5px);
 }
-
 footer .social-links a {
     width: 48px;
     height: 48px;
@@ -809,16 +788,13 @@ footer .social-links a {
     border-radius: 50%;
     transition: background-color 0.3s;
 }
-
 footer .social-links a:hover {
     background-color: var(--cherry-pink);
 }
-
 footer .social-links img {
     width: 24px;
     height: 24px;
 }
-
 footer p {
     opacity: 0.7;
 }
