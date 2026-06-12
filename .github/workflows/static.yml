@@ -40,7 +40,7 @@ jobs:
         with:
           version: 8
       - name: Install dependencies
-        run: corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile
+        run: corepack enable && corepack prepare pnpm@latest --activate && pnpm install --no-frozen-lockfile
       - name: Build
         run: pnpm build && pnpm export
       - name: Setup Pages
