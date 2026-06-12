@@ -33,7 +33,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--soft-beige);
-    background-image: url('/imgs/Ayaka1.png');
+    background-image: url('imgs/Ayaka1.png');
     background-size: cover;
     background-position: center;
     position: relative;
