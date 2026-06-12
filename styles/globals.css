@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+    --soft-blue: #81c7d4;
+    /* Light blue from the kimono and hair */
+    --cherry-pink: #e57373;
+    /* Pink from the cherry blossoms */
+    --soft-beige: #f9f6e8;
+    /* Light beige/yellow background */
+    --dark-accent: #d05a6e;
+    /* Darker pink-red from the book and ornaments */
+    --dark-gray: #333333;
+    --medium-gray: #666666;
+    --light-gray: #f5f5f5;
+}
+html {
+    scroll-behavior: smooth;
+}
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Raleway", sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}

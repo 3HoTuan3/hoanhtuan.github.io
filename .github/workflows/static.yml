@@ -35,18 +35,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
+          cache: "pnpm"
       - name: Install dependencies
-        run: npm install
+        run: corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile
       - name: Build
-        run: npm run build
+        run: pnpm build && pnpm export
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: "./dist"
+          path: "./out"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

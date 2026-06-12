@@ -1,0 +1,376 @@
+import Head from 'next/head'
+import { useEffect } from 'react'
+
+const BODY_HTML = `
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Ho Tuan</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <span class="slider"></span>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section id="home" class="banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1 class="banner-title banner-text">Hi, I'm <span class="primary-color">Ho Anh Tuan</span></h1>
+            <h2 class="banner-subtitle banner-text">Full-Stack Developer</h2>
+            <a href="#about" class="btn btn-accent banner-cta">Know More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section primary-bg">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid section-content">
+                <div class="about-image">
+                    <img src="/imgs/yeye.jpg" alt="Ho Anh Tuan">
+                </div>
+                <div class="about-content">
+                    <p>I'm a passionate Web Developer with a strong focus on creating elegant and functional user
+                        experiences. With expertise in frontend technologies and UI design, I bring creativity and
+                        technical precision to every project.</p>
+                    <p>I love programming, application development, and researching software architecture. My career
+                        objective is to become a Senior Software Engineer who masters software architecture, design
+                        principles, and modern development technologies.</p>
+                    <a href="https://www.facebook.com/hostuans" target="_blank" class="btn btn-accent">Here my CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section secondary-bg">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid section-content">
+                <div class="skill-category">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript / TypeScript</li>
+                        <li>React.js</li>
+                        <li>Vue.js</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-server skill-icon"></i>
+                    <h3>Backend Development</h3>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>MongoDB</li>
+                        <li>RESTful APIs</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-paint-brush skill-icon"></i>
+                    <h3>UI/UX Design</h3>
+                    <ul class="skill-list">
+                        <li>Figma</li>
+                        <li>Adobe XD</li>
+                        <li>Responsive Design</li>
+                        <li>Prototyping</li>
+                        <li>User Research</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-tools skill-icon"></i>
+                    <h3>Tools & Others</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Webpack</li>
+                        <li>Docker</li>
+                        <li>CI/CD</li>
+                        <li>Agile Methodologies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section light-bg">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid section-content">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/background/ecommerce.png" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Platform</h3>
+                        <p class="project-description">A full-featured online shopping platform with product management,
+                            cart functionality, and payment integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/background/Task.png" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-description">A productivity application for organizing tasks with categories,
+                            priorities, and deadline reminders.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Tailwind</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/background/weather.png" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Dashboard</h3>
+                        <p class="project-description">Real-time weather information dashboard with location search,
+                            forecasts, and interactive maps.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Weather API</span>
+                            <span class="tech-tag">Charts.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section primary-bg">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline section-content">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-title font-bold">Frontend Developer</h3>
+                        <h4 class="timeline-subtitle">Tech Solutions Inc.</h4>
+                        <p class="text-black">Developing and maintaining responsive web applications using React.js. Working closely with
+                            designers and backend developers to implement user interfaces that are both functional and
+                            visually appealing.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3 class="timeline-title font-bold">UI/UX Designer</h3>
+                        <h4 class="timeline-subtitle">Digital Creatives Ltd.</h4>
+                        <p class="text-black">Created user interfaces and experiences for web and mobile applications. Conducted user
+                            research and usability testing to ensure optimal user experiences.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3 class="timeline-title font-bold">Web Developer Intern</h3>
+                        <h4 class="timeline-subtitle">StartUp Innovations</h4>
+                        <p class="text-black">Assisted in developing website features using HTML, CSS, and JavaScript. Collaborated with
+                            senior developers to learn best practices and improve coding skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section secondary-bg">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline section-content">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2022</div>
+                        <h3 class="timeline-title font-bold">Bachelor of Science in Computer Science</h3>
+                        <h4 class="timeline-subtitle">University of Technology</h4>
+                        <p>Focused on software development, web technologies, and user interface design. Graduated with
+                            honors.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-title font-bold">UI/UX Design Certificate</h3>
+                        <h4 class="timeline-subtitle">Design Academy</h4>
+                        <p>Completed intensive training in user interface design, prototyping, and usability principles.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="timeline-title font-bold">Frontend Development Bootcamp</h3>
+                        <h4 class="timeline-subtitle">Code Institute</h4>
+                        <p>Intensive training in modern frontend technologies including React, Vue.js, and responsive
+                            design techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">CONTACT</h2>
+            <p class="contact-subtitle">I'm always open to new opportunities and collaborations</p>
+
+            <div class="contact-grid section-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Get In Touch</h3>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>tuan.ho230216@vnuk.vn.edu</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Da Nang City, Vietnam</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+84 123 456 789</p>
+                            </div>
+                        </div>
+
+                        <div class="follow-section">
+                            <h4>Follow Me</h4>
+                            <div class="social-links">
+                                <a href="https://github.com/3hotuan3" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/ho-tuan" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://twitter.com/ho_tuan" target="_blank" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <div class="form-card">
+                        <h3>Send Me a Message</h3>
+                        <form action="https://formspree.io/f/mexample" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 text-center">
+        <ul class="social-links flex justify-center gap-6 mb-6">
+            <li class="hover:-translate-y-1 transition-transform"><a href="https://github.com/3HoTuan3"
+                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
+                        src="/imgs/github.svg" alt="github" class="w-6 h-6" /></a></li>
+            <li class="hover:-translate-y-1 transition-transform"><a href="#"
+                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
+                        src="/imgs/linkedin.svg" alt="linkedin" class="w-6 h-6" /></a></li>
+            <li class="hover:-translate-y-1 transition-transform"><a href="https://x.com/"
+                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
+                        src="/imgs/twitter.svg" alt="twitter" class="w-6 h-6" /></a></li>
+        </ul>
+        <p class="opacity-70">© 2025 Ho Anh Tuan. All rights reserved.</p>
+    </footer>
+`;
+
+export default function Home() {
+  useEffect(() => {
+    import('../lib/initClient').then(mod => mod.default())
+  }, [])
+
+  return (
+    <>
+      <Head>
+        <title>Ho Anh Tuan - Web Developer</title>
+        <meta name="description" content="Frontend Developer & UI Designer specializing in web applications" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      </Head>
+      <div dangerouslySetInnerHTML={{ __html: BODY_HTML }} />
+    </>
+  )
+}
