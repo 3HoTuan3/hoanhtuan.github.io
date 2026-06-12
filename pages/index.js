@@ -38,7 +38,7 @@ const BODY_HTML = `
             <h2 class="section-title">About Me</h2>
             <div class="about-grid section-content">
                 <div class="about-image">
-                    <img src="/imgs/yeye.jpg" alt="Ho Anh Tuan">
+                    <img src="imgs/yeye.jpg" alt="Ho Anh Tuan">
                 </div>
                 <div class="about-content">
                     <p>I'm a passionate Web Developer with a strong focus on creating elegant and functional user
@@ -113,7 +113,7 @@ const BODY_HTML = `
             <div class="projects-grid section-content">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/background/ecommerce.png" alt="Project 1">
+                        <img src="background/ecommerce.png" alt="Project 1">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">E-commerce Platform</h3>
@@ -134,7 +134,7 @@ const BODY_HTML = `
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/background/Task.png" alt="Project 2">
+                        <img src="background/Task.png" alt="Project 2">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Task Management App</h3>
@@ -154,7 +154,7 @@ const BODY_HTML = `
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/background/weather.png" alt="Project 3">
+                        <img src="background/weather.png" alt="Project 3">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Weather Dashboard</h3>
@@ -343,13 +343,13 @@ const BODY_HTML = `
         <ul class="social-links flex justify-center gap-6 mb-6">
             <li class="hover:-translate-y-1 transition-transform"><a href="https://github.com/3HoTuan3"
                     class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/imgs/github.svg" alt="github" class="w-6 h-6" /></a></li>
+                        src="imgs/github.svg" alt="github" class="w-6 h-6" /></a></li>
             <li class="hover:-translate-y-1 transition-transform"><a href="#"
                     class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/imgs/linkedin.svg" alt="linkedin" class="w-6 h-6" /></a></li>
+                        src="imgs/linkedin.svg" alt="linkedin" class="w-6 h-6" /></a></li>
             <li class="hover:-translate-y-1 transition-transform"><a href="https://x.com/"
                     class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/imgs/twitter.svg" alt="twitter" class="w-6 h-6" /></a></li>
+                        src="imgs/twitter.svg" alt="twitter" class="w-6 h-6" /></a></li>
         </ul>
         <p class="opacity-70">© 2025 Ho Anh Tuan. All rights reserved.</p>
     </footer>
