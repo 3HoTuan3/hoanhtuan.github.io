@@ -1,364 +1,208 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const BODY_HTML = `
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">Ho Tuan</div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <span class="slider"></span>
-            </ul>
-        </div>
-    </nav>
+const NAV_ITEMS = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
+    { id: 'contact', label: 'Contact' },
+]
 
-    <!-- Banner Section -->
-    <section id="home" class="banner">
-        <div class="banner-overlay"></div>
-        <div class="banner-content">
-            <h1 class="banner-title banner-text">Hi, I'm <span class="primary-color">Ho Anh Tuan</span></h1>
-            <h2 class="banner-subtitle banner-text">Full-Stack Developer</h2>
-            <a href="#about" class="btn btn-accent banner-cta">Know More</a>
-        </div>
-    </section>
+const SKILL_CATEGORIES = [
+    {
+        icon: 'fas fa-code',
+        title: 'Frontend Development',
+        items: ['HTML5 & CSS3', 'JavaScript / TypeScript', 'React.js', 'Vue.js', 'Tailwind CSS'],
+    },
+    {
+        icon: 'fas fa-server',
+        title: 'Backend Development',
+        items: ['Node.js', 'Express.js', 'MongoDB', 'RESTful APIs', 'Firebase'],
+    },
+    {
+        icon: 'fas fa-paint-brush',
+        title: 'UI/UX Design',
+        items: ['Figma', 'Adobe XD', 'Responsive Design', 'Prototyping', 'User Research'],
+    },
+    {
+        icon: 'fas fa-tools',
+        title: 'Tools & Others',
+        items: ['Git & GitHub', 'Webpack', 'Docker', 'CI/CD', 'Agile Methodologies'],
+    },
+]
 
-    <!-- About Section -->
-    <section id="about" class="section primary-bg">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid section-content">
-                <div class="about-image">
-                    <img src="/hoanhtuan.github.io/imgs/yeye.jpg" alt="Ho Anh Tuan">
-                </div>
-                <div class="about-content">
-                    <p>I'm a passionate Web Developer with a strong focus on creating elegant and functional user
-                        experiences. With expertise in frontend technologies and UI design, I bring creativity and
-                        technical precision to every project.</p>
-                    <p>I love programming, application development, and researching software architecture. My career
-                        objective is to become a Senior Software Engineer who masters software architecture, design
-                        principles, and modern development technologies.</p>
-                    <a href="https://www.facebook.com/hostuans" target="_blank" class="btn btn-accent">Here my CV</a>
-                </div>
-            </div>
-        </div>
-    </section>
+const PROJECTS = [
+    {
+        image: '/hoanhtuan.github.io/background/ecommerce.png',
+        title: 'E-commerce Platform',
+        description:
+            'A full-featured online shopping platform with product management, cart functionality, and payment integration.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    },
+    {
+        image: '/hoanhtuan.github.io/background/Task.png',
+        title: 'Task Management App',
+        description:
+            'A productivity application for organizing tasks with categories, priorities, and deadline reminders.',
+        tech: ['Vue.js', 'Firebase', 'Tailwind'],
+    },
+    {
+        image: '/hoanhtuan.github.io/background/weather.png',
+        title: 'Weather Dashboard',
+        description:
+            'Real-time weather information dashboard with location search, forecasts, and interactive maps.',
+        tech: ['JavaScript', 'Weather API', 'Charts.js'],
+    },
+]
 
-    <!-- Skills Section -->
-    <section id="skills" class="section secondary-bg">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-grid section-content">
-                <div class="skill-category">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3>Frontend Development</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript / TypeScript</li>
-                        <li>React.js</li>
-                        <li>Vue.js</li>
-                        <li>Tailwind CSS</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <i class="fas fa-server skill-icon"></i>
-                    <h3>Backend Development</h3>
-                    <ul class="skill-list">
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                        <li>MongoDB</li>
-                        <li>RESTful APIs</li>
-                        <li>Firebase</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <i class="fas fa-paint-brush skill-icon"></i>
-                    <h3>UI/UX Design</h3>
-                    <ul class="skill-list">
-                        <li>Figma</li>
-                        <li>Adobe XD</li>
-                        <li>Responsive Design</li>
-                        <li>Prototyping</li>
-                        <li>User Research</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <i class="fas fa-tools skill-icon"></i>
-                    <h3>Tools & Others</h3>
-                    <ul class="skill-list">
-                        <li>Git & GitHub</li>
-                        <li>Webpack</li>
-                        <li>Docker</li>
-                        <li>CI/CD</li>
-                        <li>Agile Methodologies</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+const EXPERIENCE = [
+    {
+        date: '2023 - Present',
+        title: 'Frontend Developer',
+        subtitle: 'Tech Solutions Inc.',
+        description:
+            'Developing and maintaining responsive web applications using React.js. Working closely with designers and backend developers to implement user interfaces that are both functional and visually appealing.',
+    },
+    {
+        date: '2021 - 2023',
+        title: 'UI/UX Designer',
+        subtitle: 'Digital Creatives Ltd.',
+        description:
+            'Created user interfaces and experiences for web and mobile applications. Conducted user research and usability testing to ensure optimal user experiences.',
+    },
+    {
+        date: '2020 - 2021',
+        title: 'Web Developer Intern',
+        subtitle: 'StartUp Innovations',
+        description:
+            'Assisted in developing website features using HTML, CSS, and JavaScript. Collaborated with senior developers to learn best practices and improve coding skills.',
+    },
+]
 
-    <!-- Projects Section -->
-    <section id="projects" class="section light-bg">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid section-content">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/hoanhtuan.github.io/background/ecommerce.png" alt="Project 1">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-commerce Platform</h3>
-                        <p class="project-description">A full-featured online shopping platform with product management,
-                            cart functionality, and payment integration.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
-                    </div>
-                </div>
+const EDUCATION = [
+    {
+        date: '2018 - 2022',
+        title: 'Bachelor of Science in Computer Science',
+        subtitle: 'University of Technology',
+        description:
+            'Focused on software development, web technologies, and user interface design. Graduated with honors.',
+    },
+    {
+        date: '2023',
+        title: 'UI/UX Design Certificate',
+        subtitle: 'Design Academy',
+        description:
+            'Completed intensive training in user interface design, prototyping, and usability principles.',
+    },
+    {
+        date: '2022',
+        title: 'Frontend Development Bootcamp',
+        subtitle: 'Code Institute',
+        description:
+            'Intensive training in modern frontend technologies including React, Vue.js, and responsive design techniques.',
+    },
+]
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/hoanhtuan.github.io/background/Task.png" alt="Project 2">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Task Management App</h3>
-                        <p class="project-description">A productivity application for organizing tasks with categories,
-                            priorities, and deadline reminders.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Tailwind</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
-                    </div>
-                </div>
+const CONTACT_ITEMS = [
+    { icon: 'fas fa-envelope', label: 'Email', value: 'tuan.ho230216@vnuk.vn.edu' },
+    { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'Da Nang City, Vietnam' },
+    { icon: 'fas fa-phone', label: 'Phone', value: '+84 123 456 789' },
+]
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/hoanhtuan.github.io/background/weather.png" alt="Project 3">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-description">Real-time weather information dashboard with location search,
-                            forecasts, and interactive maps.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Weather API</span>
-                            <span class="tech-tag">Charts.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+const SOCIAL_LINKS = [
+    { href: 'https://github.com/3hotuan3', icon: 'fab fa-github', label: 'GitHub' },
+    { href: 'https://www.linkedin.com/in/ho-tuan', icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
+    { href: 'https://twitter.com/ho_tuan', icon: 'fab fa-twitter', label: 'Twitter' },
+]
 
-    <!-- Experience Section -->
-    <section id="experience" class="section primary-bg">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline section-content">
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title font-bold">Frontend Developer</h3>
-                        <h4 class="timeline-subtitle">Tech Solutions Inc.</h4>
-                        <p class="text-black">Developing and maintaining responsive web applications using React.js. Working closely with
-                            designers and backend developers to implement user interfaces that are both functional and
-                            visually appealing.</p>
-                    </div>
-                </div>
+const FOOTER_SOCIAL_LINKS = [
+    { href: 'https://github.com/3HoTuan3', image: '/hoanhtuan.github.io/imgs/github.svg', alt: 'github' },
+    { href: '#', image: '/hoanhtuan.github.io/imgs/linkedin.svg', alt: 'linkedin' },
+    { href: 'https://x.com/', image: '/hoanhtuan.github.io/imgs/twitter.svg', alt: 'twitter' },
+]
 
-                <div class="timeline-item timeline-right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021 - 2023</div>
-                        <h3 class="timeline-title font-bold">UI/UX Designer</h3>
-                        <h4 class="timeline-subtitle">Digital Creatives Ltd.</h4>
-                        <p class="text-black">Created user interfaces and experiences for web and mobile applications. Conducted user
-                            research and usability testing to ensure optimal user experiences.</p>
-                    </div>
-                </div>
+function scrollToSection(sectionId) {
+    const targetSection = document.getElementById(sectionId)
 
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2020 - 2021</div>
-                        <h3 class="timeline-title font-bold">Web Developer Intern</h3>
-                        <h4 class="timeline-subtitle">StartUp Innovations</h4>
-                        <p class="text-black">Assisted in developing website features using HTML, CSS, and JavaScript. Collaborated with
-                            senior developers to learn best practices and improve coding skills.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    if (!targetSection) {
+        return
+    }
 
-    <!-- Education Section -->
-    <section id="education" class="section secondary-bg">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline section-content">
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2018 - 2022</div>
-                        <h3 class="timeline-title font-bold">Bachelor of Science in Computer Science</h3>
-                        <h4 class="timeline-subtitle">University of Technology</h4>
-                        <p>Focused on software development, web technologies, and user interface design. Graduated with
-                            honors.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item timeline-right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023</div>
-                        <h3 class="timeline-title font-bold">UI/UX Design Certificate</h3>
-                        <h4 class="timeline-subtitle">Design Academy</h4>
-                        <p>Completed intensive training in user interface design, prototyping, and usability principles.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022</div>
-                        <h3 class="timeline-title font-bold">Frontend Development Bootcamp</h3>
-                        <h4 class="timeline-subtitle">Code Institute</h4>
-                        <p>Intensive training in modern frontend technologies including React, Vue.js, and responsive
-                            design techniques.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title">CONTACT</h2>
-            <p class="contact-subtitle">I'm always open to new opportunities and collaborations</p>
-
-            <div class="contact-grid section-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>Get In Touch</h3>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p>tuan.ho230216@vnuk.vn.edu</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Location</h4>
-                                <p>Da Nang City, Vietnam</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Phone</h4>
-                                <p>+84 123 456 789</p>
-                            </div>
-                        </div>
-
-                        <div class="follow-section">
-                            <h4>Follow Me</h4>
-                            <div class="social-links">
-                                <a href="https://github.com/3hotuan3" target="_blank" class="social-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/ho-tuan" target="_blank" class="social-link">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://twitter.com/ho_tuan" target="_blank" class="social-link">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <div class="form-card">
-                        <h3>Send Me a Message</h3>
-                        <form action="https://formspree.io/f/mexample" method="POST">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-submit">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 text-center">
-        <ul class="social-links flex justify-center gap-6 mb-6">
-            <li class="hover:-translate-y-1 transition-transform"><a href="https://github.com/3HoTuan3"
-                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/hoanhtuan.github.io/imgs/github.svg" alt="github" class="w-6 h-6" /></a></li>
-            <li class="hover:-translate-y-1 transition-transform"><a href="#"
-                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/hoanhtuan.github.io/imgs/linkedin.svg" alt="linkedin" class="w-6 h-6" /></a></li>
-            <li class="hover:-translate-y-1 transition-transform"><a href="https://x.com/"
-                    class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"><img
-                        src="/hoanhtuan.github.io/imgs/twitter.svg" alt="twitter" class="w-6 h-6" /></a></li>
-        </ul>
-        <p class="opacity-70">© 2025 Ho Anh Tuan. All rights reserved.</p>
-    </footer>
-`;
+    window.scrollTo({
+        top: targetSection.offsetTop - 70,
+        behavior: 'smooth',
+    })
+}
 
 export default function Home() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState('home')
+    const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 })
+    const navLinksRef = useRef(null)
+    const navLinkRefs = useRef({})
+
     useEffect(() => {
-        import('../lib/initClient').then(mod => mod.default())
+        import('../lib/scroll-reveal').then(({ default: initScrollReveal }) => {
+            initScrollReveal()
+        })
+
+        const updateActiveSection = () => {
+            const scrollPosition = window.scrollY + window.innerHeight / 3
+            let nextActiveSection = NAV_ITEMS[0].id
+
+            NAV_ITEMS.forEach(({ id }) => {
+                const section = document.getElementById(id)
+
+                if (!section) {
+                    return
+                }
+
+                const sectionTop = section.offsetTop
+                const sectionBottom = sectionTop + section.offsetHeight
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    nextActiveSection = id
+                }
+            })
+
+            setActiveSection(nextActiveSection)
+        }
+
+        updateActiveSection()
+        window.addEventListener('scroll', updateActiveSection, { passive: true })
+        window.addEventListener('resize', updateActiveSection)
+
+        return () => {
+            window.removeEventListener('scroll', updateActiveSection)
+            window.removeEventListener('resize', updateActiveSection)
+        }
     }, [])
+
+    useEffect(() => {
+        const activeLink = navLinkRefs.current[activeSection]
+        const navLinksElement = navLinksRef.current
+
+        if (!activeLink || !navLinksElement) {
+            return
+        }
+
+        const linkRect = activeLink.getBoundingClientRect()
+        const navLinksRect = navLinksElement.getBoundingClientRect()
+
+        setSliderStyle({
+            width: linkRect.width,
+            left: linkRect.left - navLinksRect.left,
+        })
+    }, [activeSection])
+
+    const handleNavClick = (sectionId) => {
+        setActiveSection(sectionId)
+        setMobileMenuOpen(false)
+        scrollToSection(sectionId)
+    }
 
     return (
         <>
@@ -370,7 +214,282 @@ export default function Home() {
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
             </Head>
-            <div dangerouslySetInnerHTML={{ __html: BODY_HTML }} />
+
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <div className="logo">Ho Tuan</div>
+                    <button
+                        type="button"
+                        className="mobile-menu-btn"
+                        onClick={() => setMobileMenuOpen((current) => !current)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={mobileMenuOpen}
+                    >
+                        <i className="fas fa-bars"></i>
+                    </button>
+                    <ul ref={navLinksRef} className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+                        {NAV_ITEMS.map((item) => (
+                            <li key={item.id}>
+                                <a
+                                    href={`#${item.id}`}
+                                    ref={(element) => {
+                                        if (element) {
+                                            navLinkRefs.current[item.id] = element
+                                        }
+                                    }}
+                                    className={activeSection === item.id ? 'active' : ''}
+                                    onClick={(event) => {
+                                        event.preventDefault()
+                                        handleNavClick(item.id)
+                                    }}
+                                >
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
+                        <span className="slider" style={{ width: `${sliderStyle.width}px`, left: `${sliderStyle.left}px` }}></span>
+                    </ul>
+                </div>
+            </nav>
+
+            <main>
+                <section id="home" className="banner">
+                    <div className="banner-overlay"></div>
+                    <div className="banner-content">
+                        <h1 className="banner-title banner-text">
+                            Hi, I&apos;m <span className="primary-color">Ho Anh Tuan</span>
+                        </h1>
+                        <h2 className="banner-subtitle banner-text">Full-Stack Developer</h2>
+                        <a
+                            href="#about"
+                            className="btn btn-accent banner-cta"
+                            onClick={(event) => {
+                                event.preventDefault()
+                                handleNavClick('about')
+                            }}
+                        >
+                            Know More
+                        </a>
+                    </div>
+                </section>
+
+                <section id="about" className="section primary-bg">
+                    <div className="container">
+                        <h2 className="section-title">About Me</h2>
+                        <div className="about-grid section-content">
+                            <div className="about-image">
+                                <img src="/hoanhtuan.github.io/imgs/yeye.jpg" alt="Ho Anh Tuan" />
+                            </div>
+                            <div className="about-content">
+                                <p>
+                                    I&apos;m a passionate Web Developer with a strong focus on creating elegant and functional user
+                                    experiences. With expertise in frontend technologies and UI design, I bring creativity and
+                                    technical precision to every project.
+                                </p>
+                                <p>
+                                    I love programming, application development, and researching software architecture. My career
+                                    objective is to become a Senior Software Engineer who masters software architecture, design
+                                    principles, and modern development technologies.
+                                </p>
+                                <a href="https://www.facebook.com/hostuans" target="_blank" rel="noreferrer" className="btn btn-accent">
+                                    Here my CV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" className="section secondary-bg">
+                    <div className="container">
+                        <h2 className="section-title">My Skills</h2>
+                        <div className="skills-grid section-content">
+                            {SKILL_CATEGORIES.map((skill) => (
+                                <div key={skill.title} className="skill-category">
+                                    <i className={`${skill.icon} skill-icon`}></i>
+                                    <h3>{skill.title}</h3>
+                                    <ul className="skill-list">
+                                        {skill.items.map((item) => (
+                                            <li key={item}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" className="section light-bg">
+                    <div className="container">
+                        <h2 className="section-title">My Projects</h2>
+                        <div className="projects-grid section-content">
+                            {PROJECTS.map((project) => (
+                                <div key={project.title} className="project-card">
+                                    <div className="project-image">
+                                        <img src={project.image} alt={project.title} />
+                                    </div>
+                                    <div className="project-content">
+                                        <h3 className="project-title">{project.title}</h3>
+                                        <p className="project-description">{project.description}</p>
+                                        <div className="project-tech">
+                                            {project.tech.map((tech) => (
+                                                <span key={tech} className="tech-tag">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="project-links">
+                                            <a href="#" target="_blank" rel="noreferrer">
+                                                <i className="fas fa-external-link-alt"></i> Live Demo
+                                            </a>
+                                            <a href="#" target="_blank" rel="noreferrer">
+                                                <i className="fab fa-github"></i> Source Code
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="experience" className="section primary-bg">
+                    <div className="container">
+                        <h2 className="section-title">Experience</h2>
+                        <div className="timeline section-content">
+                            {EXPERIENCE.map((item, index) => (
+                                <div key={item.title} className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}>
+                                    <div className="timeline-content">
+                                        <div className="timeline-date">{item.date}</div>
+                                        <h3 className="timeline-title font-bold">{item.title}</h3>
+                                        <h4 className="timeline-subtitle">{item.subtitle}</h4>
+                                        <p className="text-black">{item.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education" className="section secondary-bg">
+                    <div className="container">
+                        <h2 className="section-title">Education</h2>
+                        <div className="timeline section-content">
+                            {EDUCATION.map((item, index) => (
+                                <div key={item.title} className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}>
+                                    <div className="timeline-content">
+                                        <div className="timeline-date">{item.date}</div>
+                                        <h3 className="timeline-title font-bold">{item.title}</h3>
+                                        <h4 className="timeline-subtitle">{item.subtitle}</h4>
+                                        <p>{item.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" className="section contact-section">
+                    <div className="container">
+                        <h2 className="section-title">CONTACT</h2>
+                        <p className="contact-subtitle">I&apos;m always open to new opportunities and collaborations</p>
+
+                        <div className="contact-grid section-content">
+                            <div className="contact-info">
+                                <div className="contact-card">
+                                    <h3>Get In Touch</h3>
+
+                                    {CONTACT_ITEMS.map((item) => (
+                                        <div key={item.label} className="contact-item">
+                                            <div className="contact-icon">
+                                                <i className={item.icon}></i>
+                                            </div>
+                                            <div className="contact-details">
+                                                <h4>{item.label}</h4>
+                                                <p>{item.value}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    <div className="follow-section">
+                                        <h4>Follow Me</h4>
+                                        <div className="social-links">
+                                            {SOCIAL_LINKS.map((item) => (
+                                                <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="social-link">
+                                                    <i className={item.icon}></i>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="contact-form">
+                                <div className="form-card">
+                                    <h3>Send Me a Message</h3>
+                                    <form action="https://formspree.io/f/mexample" method="POST">
+                                        <div className="form-group">
+                                            <label htmlFor="name">Name</label>
+                                            <input type="text" id="name" name="name" required />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
+                                            <input type="email" id="email" name="email" required />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="subject">Subject</label>
+                                            <input type="text" id="subject" name="subject" required />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="message">Message</label>
+                                            <textarea id="message" name="message" rows="5" required></textarea>
+                                        </div>
+                                        <button type="submit" className="btn btn-submit">
+                                            Send Message
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <div className="section-nav">
+                {NAV_ITEMS.map((item) => (
+                    <div
+                        key={item.id}
+                        className={`section-nav-dot ${activeSection === item.id ? 'active' : ''}`}
+                        role="button"
+                        tabIndex={0}
+                        title={item.label}
+                        onClick={() => handleNavClick(item.id)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                handleNavClick(item.id)
+                            }
+                        }}
+                    ></div>
+                ))}
+            </div>
+
+            <footer className="bg-gray-800 text-white py-12 text-center">
+                <ul className="social-links flex justify-center gap-6 mb-6">
+                    {FOOTER_SOCIAL_LINKS.map((item) => (
+                        <li key={item.alt} className="hover:-translate-y-1 transition-transform">
+                            <a
+                                href={item.href}
+                                className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-[#e57373]"
+                                target={item.href === '#' ? undefined : '_blank'}
+                                rel={item.href === '#' ? undefined : 'noreferrer'}
+                            >
+                                <img src={item.image} alt={item.alt} className="w-6 h-6" />
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <p className="opacity-70">© 2025 Ho Anh Tuan. All rights reserved.</p>
+            </footer>
         </>
     )
 }
